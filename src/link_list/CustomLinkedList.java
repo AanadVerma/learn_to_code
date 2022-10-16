@@ -146,6 +146,20 @@ public class CustomLinkedList {
         return list;
     }
 
+    public Node reverse(Node node) {
+        Node prev = null;
+        Node current = node;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        node = prev;
+        return node;
+    }
+
     public static void main(String[] args) {
         CustomLinkedList customLinkedList = new CustomLinkedList();
         customLinkedList.insetList(customLinkedList, 1);
@@ -156,6 +170,8 @@ public class CustomLinkedList {
         customLinkedList.deleteByKey(customLinkedList, 6);
         customLinkedList.printList(customLinkedList);
         customLinkedList.deleteAtPosition(customLinkedList, 2);
+        customLinkedList.printList(customLinkedList);
+        customLinkedList.head = customLinkedList.reverse(customLinkedList.head);
         customLinkedList.printList(customLinkedList);
     }
 }
